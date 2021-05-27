@@ -1,0 +1,33 @@
+{% extends 'web/base.html'%}
+{% block title %}Recommendations{% endblock %}
+{% block body %}
+
+<div class="container">
+            <!-- Jumbotron Header-->
+            <header class="jumbotron my-4">
+                <h1 class="display-3">Ku disakitkan!</h1>
+                <p class="lead">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsa, ipsam, eligendi, in quo sunt possimus non incidunt odit vero aliquid similique quaerat nam nobis illo aspernatur vitae fugiat numquam repellat.</p>
+                <a class="btn btn-primary btn-lg" href="#!">Call to action!</a>
+            </header>
+						</div>
+						<div class="container">
+						{% if car_list %}
+						{% for car in car_list %}
+            <!-- Page Features-->
+            <div class="card-deck">
+                <div class="col-sm-6 col-md-6">
+                    <div class="card h-100">
+                        <img class="card-img-top" src="{{ car.car_img.url}}" alt="..." />
+                        <div class="card-body">
+                            <h4 class="card-title">{{car.title}}</h4>
+                            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente esse necessitatibus neque.</p>
+                        </div>
+                        <div class="card-footer"><a class="btn btn-primary" href="{% url 'detail' car.id %}">Give Rating!</a></div>
+                    </div>
+                </div>
+								{% endfor %}
+								{% endif %}
+            </div>
+        </div>
+
+{% endblock %}
