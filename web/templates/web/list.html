@@ -36,25 +36,24 @@
 	</div>
 	<div class="container-fluid">
 
-    <!-- Car list -->
-    <div class="row">
+    <!-- Car list -->    <div class="row">
             {% if cars %}
             {% for car in cars %}
-                <div class="col-lg-3 col-lg-3 ">
-                  <div class="card-group">
-                    <div class="card">
-                      <img class="card-img-top" src="{{car.car_img.url}}" alt="Card image cap">
-                      <div class="card-body">
-                        <h4 class="card-title">{{car.title}}</h4>
-                        <h5 class="card-title">{{car.price}}</h5>
-                        <p class="card-text">Bodytype: {{car.bodytype}}</p>
-                        <p class="card-text">Seat number: {{car.seatnumber}}</p>
-                        <p class="card-text">Transmission: {{car.transmission}}</p>
-                        <p class="card-text">CC: {{car.cc_car}}</p>
-                        <a href="{% url 'detail' car.id %}" class="btn btn-primary">Get Info and Rate!</a>
-                      </div>
+                <div class="col-sm-2 col-md-2 ">
+                    <div class="thumbnail">
+                        <h4>{{car.title}}</h4>
+                        <a href="{% url 'detail' car.id %}">
+                            <img src="{{ car.car_img.url}}" class="img-responsive">
+                        </a>
+                        <h5>{{car.cc}}</h5>
+                        <div class="caption">
+
+                            <!-- View Details -->
+                            <a href="{% url 'detail' car.id %}" class="btn btn-primary btn-sm" role="button">Give Rating</a>
+
+
+                        </div>
                     </div>
-                  </div>
                 </div>
                 {% endfor %}
                 {% endif %}
