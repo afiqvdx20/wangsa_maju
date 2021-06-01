@@ -1,0 +1,65 @@
+{% extends 'web/base.html'%}
+{% block body %}
+<br>
+<div class="container">
+    <div class="col-xs-6 col-xs-offset-3">
+    	<form class="form-horizontal" role="search" method="get" action=''>
+         <div class="form-group">
+         <div class="input-group">
+            <input type="text" class="form-control input-lg " name="q" value="{{ request.GET.q }}" placeholder= "Search Cars: Proton|Perodua|Honda|Toyota "/>
+            <span class='input-group-btn'>
+             <button class='btn btn-info btn-lg' type='submit'>Search
+             </button>
+         </span>
+        </div>
+     </div>
+   </form>
+
+ </div>
+</div>
+    {% if messages %}
+            <ul class="messages">
+            {% for message in messages %}
+                <li{% if message.tags %} class="{{ message.tags }}"{% endif %} >{{ message }}</li>
+            {% endfor %}
+            </ul>
+    {% endif %}
+    <div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-12 col-md-12">
+		<h1>Car List:</h1>
+        </div>
+        <div class="col-xs-offset-9  mt-3">
+        <a href="{% url 'recommend' %}" class="btn">Get Recommendations<strong><h2></h2></strong></a>
+        </div>
+    </div>
+	</div>
+	<div class="container-fluid">
+
+    <!-- Car list -->
+    <div class="row">
+            {% if cars %}
+            {% for car in cars %}
+                <div class="col-lg-3 col-lg-3 ">
+                  <div class="card-group">
+                    <div class="card">
+                      <img class="card-img-top" src="{{car.car_img.url}}" alt="Card image cap">
+                      <div class="card-body">
+                        <h4 class="card-title">{{car.title}}</h4>
+                        <h5 class="card-title">{{car.price}}</h5>
+                        <p class="card-text">Bodytype: {{car.bodytype}}</p>
+                        <p class="card-text">Seat number: {{car.seatnumber}}</p>
+                        <p class="card-text">Transmission: {{car.transmission}}</p>
+                        <p class="card-text">CC: {{car.cc_car}}</p>
+                        <a href="{% url 'detail' car.id %}" class="btn btn-primary">Go somewhere</a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                {% endfor %}
+                {% endif %}
+        </div>
+
+</div>
+
+{% endblock %}
